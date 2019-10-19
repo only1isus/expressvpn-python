@@ -65,7 +65,7 @@ def extract_aliases(vpn_list):
     - ----- ---------------    ------------------------------ -----------
     """
     aliases = []
-    for vpn_item in vpn_list[2:]:
+    for vpn_item in vpn_list[3:len(vpn_list)-2]:
         alias = vpn_item.split()[0]
         aliases.append(alias)
         # print('Found alias -> {}'.format(alias))
@@ -75,7 +75,7 @@ def extract_aliases(vpn_list):
 def random_connect():
     # activation_check()
     disconnect()
-    vpn_list = run_command(VPN_LIST)[0:46] # we use only US, UK, HK and JP VPN. Fastest ones!
+    vpn_list = run_command(VPN_LIST)
     print_output(vpn_list)
     aliases = extract_aliases(vpn_list)
     random.shuffle(aliases)
